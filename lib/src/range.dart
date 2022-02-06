@@ -26,7 +26,7 @@ class Range<Number extends num> {
 }
 
 void testRange() {
-  group("Testing for the $Range class", () {
+  group("Testing for the $Range class:", () {
     Range<int> oneTen = Range<int>(1, 10);
 
     int greater = 11;

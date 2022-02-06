@@ -1,39 +1,37 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This package is a collection of otherwise unrelated utilities that proved
+to be helpful to while creating Dart programs and Flutter apps.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Among the utilities implemented as of now, here are some of the notable ones:
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+* Get the name of the enum without the preceding enum type name.
+* A range class the encapsulates minimum and maximum values.
+* Generate include random numbers between any range 
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+Here's some example usage of this package.
 
 ```dart
-const like = 'sample';
+import 'package:handy/handy.dart';
+
+enum HelloWorld {
+  hello,
+  world,
+  exclamationPoint
+}
+
+void main() {
+  print(HelloWorld.exclamationPoint.toShortString()); // exclamationPoint
+  print(HelloWorld.world.toShortString()); // world
+
+  Range<int> oneTen = Range<int>(1, 10);
+
+  print(oneTen.random()); // *3
+  print(oneTen.randomDouble()); // *7.633
+
+  print(oneTen.clamp(0.9)); // 1
+  print(oneTen.clamp(100)); // 10
+}
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.

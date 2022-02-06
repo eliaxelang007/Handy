@@ -10,7 +10,7 @@ extension HandyEnum on Enum {
 enum _TestEnum { helloWorld }
 
 void testEnum() {
-  group("Testing for the HandyEnum extension", () {
+  group("Testing for the HandyEnum extension:", () {
     test(".toShortString(...)", () {
       expect(_TestEnum.helloWorld.toShortString() == "helloWorld", true);
     });
