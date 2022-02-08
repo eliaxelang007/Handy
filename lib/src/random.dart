@@ -4,6 +4,7 @@ import 'range.dart';
 
 final Random _random = Random();
 
+/// Gives functionality for generating random integers within an integer range.
 extension RangeInt on Range<int> {
   /// Returns a random integer in the inclusive range of [least] and [most].
   int random() {
@@ -11,6 +12,7 @@ extension RangeInt on Range<int> {
   }
 }
 
+/// Gives functionality for generating random floating point numbers within any range.
 extension RangeExtension<T extends num> on Range<T> {
   /// Returns a random double in the inclusive range of [least] and [most]. Increase the [precision] to get numbers with more deciml digits.
   double randomDouble({int precision = 1000}) {

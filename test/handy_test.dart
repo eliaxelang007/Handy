@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:handy/handy.dart';
+import 'package:handy/src/cleaner.dart';
 import 'package:test/test.dart';
 
 enum _TestEnum { helloWorld }
@@ -53,6 +56,41 @@ void main() {
       for (int i = 0; i < 20; i++) {
         expect(randomBool().runtimeType == bool, true);
       }
+    });
+  });
+
+  group("Testing for the $Cleaner class", () {
+    Cleaner<Timer> streamCleaner = Cleaner<Timer>((Timer used) {
+      used.cancel();
+    });
+
+    const Duration interval = Duration(milliseconds: 500);
+
+    Timer clock = Timer.periodic(interval, (timer) {
+      print("Clock: ${timer.tick}");
+    });
+
+    Timer grandfatherClock = Timer.periodic(interval, (timer) {
+      print("Grandfather Clock: ${timer.tick}");
+    });
+
+    test(".add(...)", () {
+      streamCleaner.add(clock);
+      streamCleaner.add(grandfatherClock);
+
+      expect(clock.isActive && grandfatherClock.isActive, true);
+    });
+
+    test(".remove(...)", () {
+      streamCleaner.remove(grandfatherClock);
+      grandfatherClock.cancel();
+
+      expect(clock.isActive && !grandfatherClock.isActive, true);
+    });
+
+    test(".cleanup(...)", () {
+      streamCleaner.cleanup();
+      expect(!clock.isActive && !grandfatherClock.isActive, true);
     });
   });
 }

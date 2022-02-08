@@ -1,3 +1,4 @@
+/// A class that encapsulates minimum and maximum values.
 class Range<Number extends num> {
   /// The minimum value of the [Range]
   final Number least;
