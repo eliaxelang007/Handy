@@ -7,7 +7,7 @@ Among the utilities implemented as of now, here are some of the notable ones:
 
 * Get the name of the enum without the preceding enum type name.
 * A range class the encapsulates minimum and maximum values.
-* Generate include random numbers between any range 
+* Generate inclusive random numbers between any range.
 
 ## Usage
 
