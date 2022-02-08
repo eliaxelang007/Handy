@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:test/test.dart';
-
 import 'range.dart';
 
 final Random _random = Random();
@@ -24,27 +22,3 @@ extension RangeExtension<T extends num> on Range<T> {
 
 /// Returns a random true or false value.
 bool randomBool() => _random.nextBool();
-
-void testRandom() {
-  group("Testing for the random functions:", () {
-    Range<int> oneTen = Range<int>(1, 10);
-
-    test(".random(...)", () {
-      for (int i = 0; i < 20; i++) {
-        expect(oneTen(oneTen.random()), true);
-      }
-    });
-
-    test(".randomDouble(...)", () {
-      for (int i = 0; i < 20; i++) {
-        expect(oneTen(oneTen.randomDouble()), true);
-      }
-    });
-
-    test("randomBool(...)", () {
-      for (int i = 0; i < 20; i++) {
-        expect(randomBool().runtimeType == bool, true);
-      }
-    });
-  });
-}
