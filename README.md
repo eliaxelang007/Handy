@@ -5,6 +5,7 @@ to be helpful to while creating Dart programs and Flutter apps.
 
 Among the utilities implemented as of now, here are some of the notable ones:
 
+* A cleaner class that performs cleanup on objects that need it.
 * Get the name of the enum without the preceding enum type name.
 * A range class the encapsulates minimum and maximum values.
 * Generate inclusive random numbers between any range.
