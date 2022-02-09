@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:handy/handy.dart';
-import 'package:handy/src/cleaner.dart';
 import 'package:test/test.dart';
 
 enum _TestEnum { helloWorld }
