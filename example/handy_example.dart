@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:handy/handy.dart';
 
 enum TestEnum {
@@ -5,7 +7,7 @@ enum TestEnum {
   singleTest,
 }
 
-void main() {
+void main() async {
   print(TestEnum.grouping.toShortString());
 
   Range<int> oneTen = Range<int>(1, 10);
@@ -17,4 +19,19 @@ void main() {
   print(oneTen.clamp(100));
 
   print(randomBool());
+
+  Timer handle =
+      Timer.periodic(const Duration(milliseconds: 500), (Timer timer) {
+    print(timer.tick);
+  });
+
+  Cleaner<Timer> cleaner = Cleaner<Timer>((Timer timer) {
+    timer.cancel();
+  });
+
+  cleaner.add(handle);
+
+  Future.delayed(const Duration(seconds: 2));
+
+  cleaner.cleanup();
 }

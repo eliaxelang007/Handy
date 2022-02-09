@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Fixed Cleaner class accessibility.
+
 ## 1.0.2
 
 - Added Cleaner class.
