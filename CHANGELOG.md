@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Added a handy extension for Datetimes.
+
 ## 1.0.3
 
 - Fixed Cleaner class accessibility.

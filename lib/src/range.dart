@@ -1,10 +1,10 @@
 /// A class that encapsulates minimum and maximum values.
-class Range<Number extends num> {
+class Range<N extends num> {
   /// The minimum value of the [Range]
-  final Number least;
+  final N least;
 
   /// The maximum value of the [Range]
-  final Number most;
+  final N most;
 
   /// Creates a [Range] starting from [least] to [most].
   const Range(this.least, this.most)
@@ -16,10 +16,9 @@ class Range<Number extends num> {
   }
 
   /// Constrains the [number] parameter to be between [least] and [most].
-  num clamp<Value extends num>(Value number) =>
+  num clamp<V extends num>(V number) =>
       (number >= most) ? most : ((number <= least) ? least : number);
 
   /// Checks if the [number] parameter is between [least] and [most].
-  bool call<Value extends num>(Value number) =>
-      number <= most && number >= least;
+  bool call<V extends num>(V number) => number <= most && number >= least;
 }

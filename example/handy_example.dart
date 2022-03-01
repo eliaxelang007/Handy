@@ -10,6 +10,8 @@ enum TestEnum {
 void main() async {
   print(TestEnum.grouping.toShortString());
 
+  print(DateTime.now().rightTruncate(TimePrecision.hour));
+
   Range<int> oneTen = Range<int>(1, 10);
 
   print(oneTen.random());

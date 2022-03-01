@@ -5,10 +5,12 @@ to be helpful to while creating Dart programs and Flutter apps.
 
 Among the utilities implemented as of now, here are some of the notable ones:
 
-* A cleaner class that performs cleanup on objects that need it.
 * Get the name of the enum without the preceding enum type name.
+* A cleaner class that performs cleanup on objects that need it.
 * A range class the encapsulates minimum and maximum values.
 * Generate inclusive random numbers between any range.
+* <, <=, >, >= operators on the DateTime class.
+* Truncate values from a DateTime instance.
 
 ## Usage
 
@@ -28,6 +30,10 @@ void main() {
   print(HelloWorld.world.toShortString()); // world
 
   Range<int> oneTen = Range<int>(1, 10);
+
+  DateTime now = DateTime.now(); // 2022-03-02 12:01:24.684
+
+  print(now.rightTruncate(TimePrecision.hour)); // 2022-03-02 00:00:00.000
 
   print(oneTen.random()); // *3
   print(oneTen.randomDouble()); // *7.633
