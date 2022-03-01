@@ -1,3 +1,7 @@
+## 1.0.5
+
+- Added a Cache class.
+
 ## 1.0.4
 
 - Added a handy extension for Datetimes.
@@ -8,7 +12,7 @@
 
 ## 1.0.2
 
-- Added Cleaner class.
+- Added a Cleaner class.
 
 ## 1.0.1
 

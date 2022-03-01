@@ -9,7 +9,7 @@ class Cleaner<T> {
       : _inUse = inUse ?? {},
         _cleaner = cleaner;
 
-  /// Stores an object in the set of objects that needs cleanup.
+  /// Stores an object in the set of objects that need cleanup.
   /// The object will then be cleaned with [_cleaner] when [cleanup] is called.
   /// Returns true if the object wasn't in the set yet and vice versa.
   bool add(T inUse) {

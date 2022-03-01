@@ -9,6 +9,7 @@ Among the utilities implemented as of now, here are some of the notable ones:
 * A cleaner class that performs cleanup on objects that need it.
 * A range class the encapsulates minimum and maximum values.
 * Generate inclusive random numbers between any range.
+* A Cache class that caches outputs for inputs.
 * <, <=, >, >= operators on the DateTime class.
 * Truncate values from a DateTime instance.
 
