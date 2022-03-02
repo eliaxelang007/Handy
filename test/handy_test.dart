@@ -164,7 +164,7 @@ void main() {
     });
 
     test(".timeFromLast(...)", () {
-      DateTime lastMonth = DateTime(testTime.year, testTime.month - 1);
+      DateTime lastMonth = DateTime(testTime.year, testTime.month);
 
       expect(
           testTime.timeFromLast(TimePrecision.month) ==

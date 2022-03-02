@@ -1,10 +1,14 @@
+## 1.0.6
+
+- Fixed timeFromLast functionality of the DateTime extension.
+
 ## 1.0.5
 
 - Added a Cache class.
 
 ## 1.0.4
 
-- Added a handy extension for Datetimes.
+- Added a handy extension for DateTimes.
 
 ## 1.0.3
 

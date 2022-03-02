@@ -119,7 +119,8 @@ extension HandyDateTime on DateTime {
 
   /// Returns the duration from the last [precision]
   Duration timeFromLast(TimePrecision precision) {
-    return difference(rightTruncate(precision));
+    if (precision == TimePrecision.values.last) return Duration.zero;
+    return difference(rightTruncate(TimePrecision.values[precision.index + 1]));
   }
 
   /// Returns true if the current [DateTime] instance [isBefore] the [other] instance and vice versa.
