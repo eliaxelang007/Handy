@@ -1,3 +1,11 @@
+## 1.0.7
+
+- Added ability to multiply strings.
+- Added [toTitleCase] method on String
+- Added [capitalize] method on String
+- Added [center] method on String
+- Added [appearances] method on String
+
 ## 1.0.6
 
 - Fixed timeFromLast functionality of the DateTime extension.

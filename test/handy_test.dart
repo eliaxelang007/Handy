@@ -261,6 +261,30 @@ void main() {
       }
     });
   });
+
+  group("extension HandyString", () {
+    String testString = "hello, world!";
+
+    test(
+        "operator *",
+        () => expect(
+            "hello, world!hello, world!hello, world!" == testString * 3, true));
+    test(".capitalize(...)",
+        () => expect("Hello, world!" == testString.capitalize(), true));
+
+    test(".center(...)", () {
+      expect(
+          "----hello, world!----" == testString.center(21, filler: "-"), true);
+      expect(
+          "----hello, world!---" == testString.center(20, filler: "-"), true);
+    });
+
+    test(".appearances(...)",
+        () => expect(testString.appearances("l") == 3, true));
+
+    test(".toTitleCase(...)",
+        () => expect("Hello, World!" == testString.toTitleCase(), true));
+  });
 }
 
 const List<int> crc8MaximDallasTable = [

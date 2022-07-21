@@ -6,3 +6,4 @@ export 'src/random.dart';
 export 'src/cleaner.dart';
 export 'src/datetime.dart';
 export 'src/cache.dart';
+export 'src/strings.dart';

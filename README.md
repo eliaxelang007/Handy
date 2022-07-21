@@ -6,6 +6,7 @@ to be helpful to while creating Dart programs and Flutter apps.
 Among the utilities implemented as of now, here are some of the notable ones:
 
 * Get the name of the enum without the preceding enum type name.
+* Added string utility methods like [toTitleCase] and [capitalize].
 * A cleaner class that performs cleanup on objects that need it.
 * A range class the encapsulates minimum and maximum values.
 * Generate inclusive random numbers between any range.
@@ -27,8 +28,14 @@ enum HelloWorld {
 }
 
 void main() {
+  String helloWorld = "hello, world!";
+
+  print(helloWorld * 3);           // hello, world!hello, world!hello, world!
+  print(helloWorld.toTitleCase()); // Hello, World!
+  print(helloWorld.capitalize());  // Hello, world!
+
   print(HelloWorld.exclamationPoint.toShortString()); // exclamationPoint
-  print(HelloWorld.world.toShortString()); // world
+  print(HelloWorld.world.toShortString());            // world
 
   Range<int> oneTen = Range<int>(1, 10);
 
@@ -36,7 +43,7 @@ void main() {
 
   print(now.rightTruncate(TimePrecision.hour)); // 2022-03-02 00:00:00.000
 
-  print(oneTen.random()); // *3
+  print(oneTen.random());       // *3
   print(oneTen.randomDouble()); // *7.633
 
   print(oneTen.clamp(0.9)); // 1
