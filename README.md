@@ -21,7 +21,7 @@ Here's some example usage of this package.
 ```dart
 import 'package:handy/handy.dart';
 
-enum HelloWorld {
+enum SampleEnum {
   hello,
   world,
   exclamationPoint
@@ -34,8 +34,8 @@ void main() {
   print(helloWorld.toTitleCase()); // Hello, World!
   print(helloWorld.capitalize());  // Hello, world!
 
-  print(HelloWorld.exclamationPoint.toShortString()); // exclamationPoint
-  print(HelloWorld.world.toShortString());            // world
+  print(SampleEnum.exclamationPoint.toShortString()); // exclamationPoint
+  print(SampleEnum.world.toShortString());            // world
 
   Range<int> oneTen = Range<int>(1, 10);
 
