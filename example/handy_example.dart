@@ -1,39 +1,40 @@
-import 'dart:async';
-
 import 'package:handy/handy.dart';
 
-enum TestEnum {
-  grouping,
-  singleTest,
+enum Heat {
+  cold(Range(0, 36.66)),
+  lukewarm(Range(36.67, 37.78)),
+  hot(Range(37.79, 50));
+
+  const Heat(this.celsiusRange);
+
+  final Range<double> celsiusRange;
 }
 
-void main() async {
-  print(TestEnum.grouping.toShortString());
+void main() {
+  final title = "comments on bathwater heat".toTitleCase();
+  print(title); // Comments On Bathwater Heat
 
-  print(DateTime.now().rightTruncate(TimePrecision.hour));
+  for (int i = 0; i < 4; i++) {
+    final waterHeat = Range<double>(0, 50).randomDouble();
 
-  Range<int> oneTen = Range<int>(1, 10);
+    print("The water is $waterHeat degrees celsius.");
 
-  print(oneTen.random());
-  print(oneTen.randomDouble());
+    const cold = Heat.cold;
 
-  print(oneTen.clamp(0.9));
-  print(oneTen.clamp(100));
+    if (cold.celsiusRange(waterHeat)) {
+      print(cold.toShortString()); // cold
+    }
 
-  print(randomBool());
+    const lukewarm = Heat.lukewarm;
 
-  Timer handle =
-      Timer.periodic(const Duration(milliseconds: 500), (Timer timer) {
-    print(timer.tick);
-  });
+    if (lukewarm.celsiusRange(waterHeat)) {
+      print("${lukewarm.toShortString()}...".capitalize()); // Lukewarm...
+    }
 
-  Cleaner<Timer> cleaner = Cleaner<Timer>((Timer timer) {
-    timer.cancel();
-  });
+    const hot = Heat.hot;
 
-  cleaner.add(handle);
-
-  Future.delayed(const Duration(seconds: 2));
-
-  cleaner.cleanup();
+    if (hot.celsiusRange(waterHeat)) {
+      print("${hot.toShortString()}! " * 3); // hot! hot! hot!
+    }
+  }
 }

@@ -1,3 +1,7 @@
+## 1.0.8
+
+- Added inBetween method on lists.
+
 ## 1.0.7
 
 - Added ability to multiply strings.

@@ -5,13 +5,13 @@ to be helpful to while creating Dart programs and Flutter apps.
 
 Among the utilities implemented as of now, here are some of the notable ones:
 
-* Get the name of the enum without the preceding enum type name.
 * Added string utility methods like [toTitleCase] and [capitalize].
 * A cleaner class that performs cleanup on objects that need it.
+* Get the name of the enum without the preceding enum type name.
 * A range class the encapsulates minimum and maximum values.
 * Generate inclusive random numbers between any range.
-* A Cache class that caches outputs for inputs.
 * <, <=, >, >= operators on the DateTime class.
+* A Cache class that caches outputs for inputs.
 * Truncate values from a DateTime instance.
 
 ## Usage
@@ -21,32 +21,42 @@ Here's some example usage of this package.
 ```dart
 import 'package:handy/handy.dart';
 
-enum SampleEnum {
-  hello,
-  world,
-  exclamationPoint
+enum Heat {
+  cold(Range(0, 36.66)),
+  lukewarm(Range(36.67, 37.78)),
+  hot(Range(37.79, 50));
+
+  const Heat(this.celsiusRange);
+
+  final Range<double> celsiusRange;
 }
 
 void main() {
-  String helloWorld = "hello, world!";
+  final title = "comments on bathwater heat".toTitleCase();
+  print(title); // Comments On Bathwater Heat
 
-  print(helloWorld * 3);           // hello, world!hello, world!hello, world!
-  print(helloWorld.toTitleCase()); // Hello, World!
-  print(helloWorld.capitalize());  // Hello, world!
+  for (int i = 0; i < 4; i++) {
+    final waterHeat = Range<double>(0, 50).randomDouble();
 
-  print(SampleEnum.exclamationPoint.toShortString()); // exclamationPoint
-  print(SampleEnum.world.toShortString());            // world
+    print("The water is $waterHeat degrees celsius.");
 
-  Range<int> oneTen = Range<int>(1, 10);
+    const cold = Heat.cold;
 
-  DateTime now = DateTime.now(); // 2022-03-02 12:01:24.684
+    if (cold.celsiusRange(waterHeat)) {
+      print(cold.toShortString()); // cold
+    }
 
-  print(now.rightTruncate(TimePrecision.hour)); // 2022-03-02 00:00:00.000
+    const lukewarm = Heat.lukewarm;
 
-  print(oneTen.random());       // *3
-  print(oneTen.randomDouble()); // *7.633
+    if (lukewarm.celsiusRange(waterHeat)) {
+      print("${lukewarm.toShortString()}...".capitalize()); // Lukewarm...
+    }
 
-  print(oneTen.clamp(0.9)); // 1
-  print(oneTen.clamp(100)); // 10
+    const hot = Heat.hot;
+
+    if (hot.celsiusRange(waterHeat)) {
+      print("${hot.toShortString()}! " * 3); // hot! hot! hot!
+    }
+  }
 }
 ```
