@@ -1,10 +1,14 @@
+## 1.1.0
+
+- Improved [inBetween] method by making it an extension of [Iterable] and not [List].
+
 ## 1.0.9
 
-- Fixed access of inBetween method.
+- Fixed access of [inBetween] method.
 
 ## 1.0.8
 
-- Added inBetween method on lists.
+- Added [inBetween] method on lists.
 
 ## 1.0.7
 

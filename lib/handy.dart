@@ -7,4 +7,4 @@ export 'src/cleaner.dart';
 export 'src/datetime.dart';
 export 'src/cache.dart';
 export 'src/strings.dart';
-export 'src/lists.dart';
+export 'src/iterables.dart';
