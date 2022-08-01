@@ -1,3 +1,7 @@
+## 1.0.9
+
+- Fixed access of inBetween method.
+
 ## 1.0.8
 
 - Added inBetween method on lists.
