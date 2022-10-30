@@ -1,3 +1,7 @@
+## 1.1.2
+
+- Apparently, I didn't fix the formatting issue. I hope this works now.
+
 ## 1.1.1
 
 - Fixed formatting issue in lib/src/iterables.dart
