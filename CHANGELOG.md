@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Fixed formatting issue in lib/src/iterables.dart
+
 ## 1.1.0
 
 - Improved [inBetween] method by making it an extension of [Iterable] and not [List].
