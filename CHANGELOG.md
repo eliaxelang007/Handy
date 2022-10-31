@@ -1,6 +1,10 @@
+## 1.1.3
+
+- Made [expect] calls in the tests more idiomatic.
+
 ## 1.1.2
 
-- Apparently, I didn't fix the formatting issue. I hope this works now.
+- Apparently, I didn't fix the formatting issue. Hopefully, I've fixed it now.
 
 ## 1.1.1
 
