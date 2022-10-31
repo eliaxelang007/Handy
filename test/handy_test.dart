@@ -18,23 +18,23 @@ void main() {
     double decimalBetween = 7.333;
 
     test(".clamp(...)", () {
-      expect(oneTen.clamp(greater) == oneTen.most, true);
-      expect(oneTen.clamp(lesser) == oneTen.least, true);
-      expect(oneTen.clamp(wholeBetween) == wholeBetween, true);
-      expect(oneTen.clamp(decimalBetween) == decimalBetween, true);
+      expect(oneTen.clamp(greater), equals(oneTen.most));
+      expect(oneTen.clamp(lesser), equals(oneTen.least));
+      expect(oneTen.clamp(wholeBetween), equals(wholeBetween));
+      expect(oneTen.clamp(decimalBetween), equals(decimalBetween));
     });
 
     test(".call(...)", () {
-      expect(oneTen(greater), false);
-      expect(oneTen(lesser), false);
-      expect(oneTen(wholeBetween), true);
-      expect(oneTen(decimalBetween), true);
+      expect(oneTen(greater), equals(false));
+      expect(oneTen(lesser), equals(false));
+      expect(oneTen(wholeBetween), equals(true));
+      expect(oneTen(decimalBetween), equals(true));
     });
   });
 
   group("extension HandyEnum", () {
     test(".toShortString(...)", () {
-      expect(_TestEnum.helloWorld.toShortString() == "helloWorld", true);
+      expect(_TestEnum.helloWorld.toShortString(), equals("helloWorld"));
     });
   });
 
@@ -43,19 +43,19 @@ void main() {
 
     test(".random(...)", () {
       for (int i = 0; i < 20; i++) {
-        expect(oneTen(oneTen.random()), true);
+        expect(oneTen(oneTen.random()), equals(true));
       }
     });
 
     test(".randomDouble(...)", () {
       for (int i = 0; i < 20; i++) {
-        expect(oneTen(oneTen.randomDouble()), true);
+        expect(oneTen(oneTen.randomDouble()), equals(true));
       }
     });
 
     test("randomBool(...)", () {
       for (int i = 0; i < 20; i++) {
-        expect(randomBool().runtimeType == bool, true);
+        expect(randomBool().runtimeType, equals(bool));
       }
     });
   });
@@ -79,19 +79,19 @@ void main() {
       streamCleaner.add(clock);
       streamCleaner.add(grandfatherClock);
 
-      expect(clock.isActive && grandfatherClock.isActive, true);
+      expect(clock.isActive && grandfatherClock.isActive, equals(true));
     });
 
     test(".remove(...)", () {
       streamCleaner.remove(grandfatherClock);
       grandfatherClock.cancel();
 
-      expect(clock.isActive && !grandfatherClock.isActive, true);
+      expect(clock.isActive && !grandfatherClock.isActive, equals(true));
     });
 
     test(".cleanup(...)", () {
       streamCleaner.cleanup();
-      expect(!clock.isActive && !grandfatherClock.isActive, true);
+      expect(!clock.isActive && !grandfatherClock.isActive, equals(true));
     });
   });
 
@@ -101,7 +101,7 @@ void main() {
     test(".truncate(...)", () {
       DateTime truncated = testTime.truncate();
 
-      truncated.isAtSameMomentAs(DateTime(0));
+      expect(truncated.isAtSameMomentAs(DateTime(0)), equals(true));
     });
 
     test(".rightTruncate(...)", () {
@@ -110,17 +110,16 @@ void main() {
       expect(
           truncated.isAtSameMomentAs(
               DateTime(testTime.year, testTime.month, testTime.day)),
-          true);
+          equals(true));
     });
 
     test(".leftTruncate(...)", () {
       DateTime truncated = testTime.leftTruncate(TimePrecision.minute);
 
       expect(
-          truncated ==
-              DateTime(0, 1, 1, 0, testTime.minute, testTime.second,
-                  testTime.millisecond, testTime.microsecond),
-          true);
+          truncated.isAtSameMomentAs(DateTime(0, 1, 1, 0, testTime.minute,
+              testTime.second, testTime.millisecond, testTime.microsecond)),
+          equals(true));
     });
 
     test(".copyWith(...)", () {
@@ -128,75 +127,72 @@ void main() {
       DateTime modified = testTime.copyWith(year: twosYear);
 
       expect(
-          modified ==
-              DateTime(
-                  twosYear,
-                  testTime.month,
-                  testTime.day,
-                  testTime.hour,
-                  testTime.minute,
-                  testTime.second,
-                  testTime.millisecond,
-                  testTime.microsecond),
-          true);
+          modified.isAtSameMomentAs(DateTime(
+              twosYear,
+              testTime.month,
+              testTime.day,
+              testTime.hour,
+              testTime.minute,
+              testTime.second,
+              testTime.millisecond,
+              testTime.microsecond)),
+          equals(true));
     });
 
     test(".value(...)", () {
-      expect(testTime.year == testTime.value(TimePrecision.year), true);
-      expect(testTime.month == testTime.value(TimePrecision.month), true);
-      expect(testTime.day == testTime.value(TimePrecision.day), true);
-      expect(testTime.hour == testTime.value(TimePrecision.hour), true);
-      expect(testTime.minute == testTime.value(TimePrecision.minute), true);
-      expect(testTime.second == testTime.value(TimePrecision.second), true);
-      expect(testTime.millisecond == testTime.value(TimePrecision.millisecond),
-          true);
-      expect(testTime.microsecond == testTime.value(TimePrecision.microsecond),
-          true);
+      expect(testTime.year, equals(testTime.value(TimePrecision.year)));
+      expect(testTime.month, equals(testTime.value(TimePrecision.month)));
+      expect(testTime.day, equals(testTime.value(TimePrecision.day)));
+      expect(testTime.hour, equals(testTime.value(TimePrecision.hour)));
+      expect(testTime.minute, equals(testTime.value(TimePrecision.minute)));
+      expect(testTime.second, equals(testTime.value(TimePrecision.second)));
+      expect(testTime.millisecond,
+          equals(testTime.value(TimePrecision.millisecond)));
+      expect(
+        testTime.microsecond,
+        equals(testTime.value(TimePrecision.microsecond)),
+      );
     });
 
     test(".timeTillNext(...)", () {
       DateTime nextMonth = DateTime(testTime.year, testTime.month + 1);
 
-      expect(
-          testTime.timeTillNext(TimePrecision.month) ==
-              nextMonth.difference(testTime),
-          true);
+      expect(testTime.timeTillNext(TimePrecision.month),
+          equals(nextMonth.difference(testTime)));
     });
 
     test(".timeFromLast(...)", () {
       DateTime lastMonth = DateTime(testTime.year, testTime.month);
 
-      expect(
-          testTime.timeFromLast(TimePrecision.month) ==
-              testTime.difference(lastMonth),
-          true);
+      expect(testTime.timeFromLast(TimePrecision.month),
+          equals(testTime.difference(lastMonth)));
     });
 
     DateTime before = testTime.subtract(const Duration(milliseconds: 1024));
     DateTime after = testTime.add(const Duration(milliseconds: 1024));
 
     test("operator <(other)", () {
-      expect(before < testTime, true);
-      expect(testTime < testTime, false);
-      expect(after < testTime, false);
+      expect(before < testTime, equals(true));
+      expect(testTime < testTime, equals(false));
+      expect(after < testTime, equals(false));
     });
 
     test("operator >(other)", () {
-      expect(after > testTime, true);
-      expect(testTime > testTime, false);
-      expect(before > testTime, false);
+      expect(after > testTime, equals(true));
+      expect(testTime > testTime, equals(false));
+      expect(before > testTime, equals(false));
     });
 
     test("operator <=(other)", () {
-      expect(before <= testTime, true);
-      expect(testTime <= testTime, true);
-      expect(after <= testTime, false);
+      expect(before <= testTime, equals(true));
+      expect(testTime <= testTime, equals(true));
+      expect(after <= testTime, equals(false));
     });
 
     test("operator >=(other)", () {
-      expect(after >= testTime, true);
-      expect(testTime >= testTime, true);
-      expect(before >= testTime, false);
+      expect(after >= testTime, equals(true));
+      expect(testTime >= testTime, equals(true));
+      expect(before >= testTime, equals(false));
     });
   });
 
@@ -257,7 +253,7 @@ void main() {
       for (String word in testWords) {
         Uint8List encodedWord = Uint8List.fromList(utf8.encode(word));
 
-        expect(tableCrc8(encodedWord) == cachedCrc8(encodedWord), true);
+        expect(tableCrc8(encodedWord), equals(cachedCrc8(encodedWord)));
       }
     });
   });
@@ -268,60 +264,44 @@ void main() {
     test(
         "operator *",
         () => expect(
-            "hello, world!hello, world!hello, world!" == testString * 3, true));
+            "hello, world!hello, world!hello, world!", equals(testString * 3)));
+
     test(".capitalize(...)",
-        () => expect("Hello, world!" == testString.capitalize(), true));
+        () => expect("Hello, world!", equals(testString.capitalize())));
+
+    test(".toTitleCase(...)",
+        () => expect("Hello, World!", equals(testString.toTitleCase())));
 
     test(".center(...)", () {
       expect(
-          "----hello, world!----" == testString.center(21, filler: "-"), true);
+          "----hello, world!----", equals(testString.center(21, filler: "-")));
       expect(
-          "----hello, world!---" == testString.center(20, filler: "-"), true);
+          "----hello, world!---", equals(testString.center(20, filler: "-")));
     });
 
     test(".appearances(...)",
-        () => expect(testString.appearances("l") == 3, true));
-
-    test(".toTitleCase(...)",
-        () => expect("Hello, World!" == testString.toTitleCase(), true));
+        () => expect(testString.appearances("l"), equals(3)));
   });
 
   group("extension HandyIterable", () {
-    bool listCompare<T>(List<T> a, List<T> b) {
-      if (a.length != b.length) return false;
-
-      for (int i = 0, length = a.length; i < length; i++) {
-        if (a[i] != b[i]) return false;
-      }
-
-      return true;
-    }
-
     test(".inBetween(...)", () {
       const expected = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
       expect(
-          listCompare([0, 2, 4, 6, 8, 10].inBetween((index) => index).toList(),
-              expected),
-          true);
-      expect(listCompare([1].inBetween((index) => index).toList(), [1]), true);
-      expect(
-          listCompare(
-              [].inBetween((index) => index, outer: false).toList(), []),
-          true);
+          [0, 2, 4, 6, 8, 10]
+              .inBetween((index) => index, outer: false)
+              .toList(),
+          equals(expected));
+      expect([1, 3, 5, 7, 9].inBetween((index) => index, outer: true).toList(),
+          equals(expected));
 
       expect(
-          listCompare(
-              [1, 3, 5, 7, 9].inBetween((index) => index, outer: true).toList(),
-              expected),
-          true);
-      expect(
-          listCompare(
-              [1].inBetween((index) => index, outer: true).toList(), [0, 1, 2]),
-          true);
-      expect(
-          listCompare([].inBetween((index) => index, outer: true).toList(), []),
-          true);
+          [1].inBetween((index) => index, outer: false).toList(), equals([1]));
+      expect([1].inBetween((index) => index, outer: true).toList(),
+          equals([0, 1, 2]));
+
+      expect([].inBetween((index) => index, outer: false).toList(), equals([]));
+      expect([].inBetween((index) => index, outer: true).toList(), equals([]));
     });
   });
 }
