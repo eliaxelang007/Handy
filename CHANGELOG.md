@@ -1,3 +1,7 @@
+## 1.1.4
+
+- Changed the project's license
+
 ## 1.1.3
 
 - Made [expect] calls in the tests more idiomatic.
