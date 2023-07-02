@@ -14,8 +14,8 @@ extension RangeInt on Range<int> {
 
 /// Gives functionality for generating random floating point numbers within any range.
 extension RangeExtension<T extends num> on Range<T> {
-  /// Returns a random double in the inclusive range of [least] and [most]. Increase the [precision] to get numbers with more decimal digits.
-  double randomDouble({int precision = 1000}) {
+  /// Returns a random double in the inclusive range of [least] and [most]. Change the [precision] to get numbers with more decimal digits.
+  double randomDouble({int precision = 1217 /* Some random prime number */}) {
     Range<int> generator = Range<int>(0, precision);
 
     return least + ((most - least) * (generator.random() / generator.most));

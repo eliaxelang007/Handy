@@ -1,3 +1,5 @@
+import 'range.dart';
+
 extension HandyList<T> on Iterable<T> {
   /// Returns a new iterable where new elements are inserted between the elements of the current iterable.
   /// Example: [0, 2, 4, 6, 8, 10].inBetween((index) => index) == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -29,5 +31,14 @@ extension HandyList<T> on Iterable<T> {
     }
 
     if (outer) yield between(index + offset);
+  }
+}
+
+extension RangeIterable on Range<int> {
+  /// Returns a an iterable that starts at [least] and counts up until [most].
+  Iterable<int> iter() sync* {
+    for (int i = least; contains(i); i++) {
+      yield i;
+    }
   }
 }

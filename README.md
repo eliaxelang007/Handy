@@ -16,47 +16,40 @@ Among the utilities implemented as of now, here are some of the notable ones:
 
 ## Usage
 
-Here's some example usage of this package.
+Here's a few example uses for this package to get you up and running!
 
 ```dart
 import 'package:handy/handy.dart';
 
-enum Heat {
-  cold(Range(0, 36.66)),
-  lukewarm(Range(36.67, 37.78)),
-  hot(Range(37.79, 50));
-
-  const Heat(this.celsiusRange);
-
-  final Range<double> celsiusRange;
+enum Temperature {
+  hot
 }
 
 void main() {
-  final title = "comments on bathwater heat".toTitleCase();
-  print(title); // Comments On Bathwater Heat
+  print(Temperature.hot.toShortString()); // hot
+}
+```
 
-  for (int i = 0; i < 4; i++) {
-    final waterHeat = Range<double>(0, 50).randomDouble();
+```dart
+import 'package:handy/handy.dart';
 
-    print("The water is $waterHeat degrees celsius.");
+void main() {
+  final oneToTen = Range(1, 10);
+  final outOfRange = 13;
 
-    const cold = Heat.cold;
+  print(oneToTen.contains(outOfRange)); // false
+  print(oneToTen.clamp(outOfRange)); // 10
+  print(oneToTen.random()); // A random number between one and ten
+}
+```
 
-    if (cold.celsiusRange(waterHeat)) {
-      print(cold.toShortString()); // cold
-    }
+```dart
+import 'package:handy/handy.dart';
 
-    const lukewarm = Heat.lukewarm;
+void main() {
+  final title = "rayman 2: the great escape";
 
-    if (lukewarm.celsiusRange(waterHeat)) {
-      print("${lukewarm.toShortString()}...".capitalize()); // Lukewarm...
-    }
-
-    const hot = Heat.hot;
-
-    if (hot.celsiusRange(waterHeat)) {
-      print("${hot.toShortString()}! " * 3); // hot! hot! hot!
-    }
-  }
+  print(title.toTitleCase()); // Rayman 2: The Great Escape
+  print(title.capitalize()); // Rayman 2: the great escape
 }
 ```

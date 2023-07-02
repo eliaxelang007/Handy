@@ -3,9 +3,10 @@ extension HandyString on String {
   /// Example: "abc" * 3 == "abcabcabc"
   String operator *(int repeats) => List.filled(repeats, this).join();
 
-  /// Capitalizes the first letter of a string.
+  /// Capitalizes the first letter of a string and turns all other letters lowercase.
   /// Example: "abc".capitalize() == "Abc"
-  String capitalize() => "${this[0].toUpperCase()}${substring(1)}";
+  String capitalize() =>
+      "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
 
   /// Centers the string using [filler] as padding.
   /// Example: "abc".center(7, "-") == "--abc--"
@@ -23,7 +24,7 @@ extension HandyString on String {
   /// Example: "aaabc".count('a') == 3
   int appearances(String other) => other.allMatches(this).length;
 
-  /// Capitalizes the first letter of each word in the string.
+  /// Capitalizes each word in the string.
   /// Example: "rayman 2: the great escape".toTitleCase() == "Rayman 2: The Great Escape"
   String toTitleCase() => replaceAllMapped(
       RegExp(r'\b\w+\b'), (match) => match.group(0)!.capitalize());

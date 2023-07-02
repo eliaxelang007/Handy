@@ -1,3 +1,8 @@
+## 1.1.5
+
+- Added a new [.iter()] function to the Range class that allows you to iterate over its elements.
+- And a few other tweaks and removals.
+
 ## 1.1.4
 
 - Changed the project's license

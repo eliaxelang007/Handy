@@ -25,10 +25,10 @@ void main() {
     });
 
     test(".call(...)", () {
-      expect(oneTen(greater), equals(false));
-      expect(oneTen(lesser), equals(false));
-      expect(oneTen(wholeBetween), equals(true));
-      expect(oneTen(decimalBetween), equals(true));
+      expect(oneTen.contains(greater), equals(false));
+      expect(oneTen.contains(lesser), equals(false));
+      expect(oneTen.contains(wholeBetween), equals(true));
+      expect(oneTen.contains(decimalBetween), equals(true));
     });
   });
 
@@ -43,13 +43,13 @@ void main() {
 
     test(".random(...)", () {
       for (int i = 0; i < 20; i++) {
-        expect(oneTen(oneTen.random()), equals(true));
+        expect(oneTen.contains(oneTen.random()), equals(true));
       }
     });
 
     test(".randomDouble(...)", () {
       for (int i = 0; i < 20; i++) {
-        expect(oneTen(oneTen.randomDouble()), equals(true));
+        expect(oneTen.contains(oneTen.randomDouble()), equals(true));
       }
     });
 
@@ -302,6 +302,15 @@ void main() {
 
       expect([].inBetween((index) => index, outer: false).toList(), equals([]));
       expect([].inBetween((index) => index, outer: true).toList(), equals([]));
+    });
+  });
+
+  group("extension RangeIterable", () {
+    test(".iter(...)", () {
+      const expected = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      final zeroToTen = Range(0, 10);
+
+      expect(expected, equals(zeroToTen.iter().toList()));
     });
   });
 }
